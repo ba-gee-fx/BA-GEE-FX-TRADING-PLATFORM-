@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b16">
+  <title>BA GEE FX | Trading Education</title>
+  <style>
+    :root{--bg:#071b16;--panel:#102820;--green:#38d996;--muted:#b7cbc2;--white:#f4fff9;--line:#24483a}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--white);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1100px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:5;background:#071b16ed;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+    .brand{font-weight:900;letter-spacing:.08em}.brand span{color:var(--green)}
+    .navlinks{display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-size:.94rem;color:var(--muted)}
+    .btn{display:inline-block;border:0;border-radius:12px;padding:11px 16px;background:var(--green);color:#062016;font-weight:800;cursor:pointer}
+    .btn.secondary{background:transparent;color:var(--white);border:1px solid var(--line)}
+    .hero{padding:72px 0 56px;background:radial-gradient(ellipse at 80% 20%,#1b6245 0,transparent 45%)}
+    .tag{display:inline-block;color:var(--green);border:1px solid #2b7254;border-radius:99px;padding:5px 11px;font-size:.82rem}
+    h1{font-size:clamp(2.3rem,7vw,4.6rem);line-height:1.05;max-width:780px;margin:20px 0}
+    h1 em{font-style:normal;color:var(--green)}.lead{max-width:640px;color:var(--muted);font-size:1.1rem}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:42px}
+    .stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+    .stat strong{display:block;font-size:1.2rem;color:var(--green)}.stat small{color:var(--muted)}
+    section.content{padding:48px 0}h2{font-size:clamp(1.7rem,4vw,2.5rem);margin:0 0 10px} .sub{color:var(--muted);margin-top:0;max-width:680px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.card h3{margin:4px 0 8px}.card p{color:var(--muted);margin-bottom:0}
+    .icon{font-size:1.6rem}.notice{border:1px solid #78632c;background:#2a2513;color:#f6e6b0;padding:14px 16px;border-radius:14px;margin-top:22px}
+    .panel{max-width:560px;background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:18px}
+    label{display:block;margin:12px 0 5px;color:var(--muted)}input{width:100%;padding:12px;border:1px solid var(--line);background:#081b15;color:var(--white);border-radius:10px;font:inherit}
+    .hidden{display:none}footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.9rem}
+    @media(max-width:720px){.cards{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.hero{padding-top:48px}.navlinks{gap:10px}}
+  </style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+  <a class="brand" href="#" onclick="showPage('home');return false">BA GEE <span>FX</span></a>
+  <div class="navlinks"><a href="#learn">Learn</a><a href="#about">About</a><button class="btn secondary" onclick="showPage('login')">Login</button><button class="btn" onclick="showPage('register')">Join platform</button></div>
+</nav></div></header>
+<main class="wrap">
+  <section id="home" class="hero page">
+    <span class="tag">YOUR TRADING LEARNING JOURNEY</span>
+    <h1>Build your knowledge.<br><em>Trade with a plan.</em></h1>
+    <p class="lead">Welcome to BA GEE FX — a platform concept for learning about forex markets, risk management, trading discipline, and market analysis.</p>
+    <div class="actions"><button class="btn" onclick="document.getElementById('learn').scrollIntoView({behavior:'smooth'})">Explore learning</button><button class="btn secondary" onclick="showPage('register')">Create an account</button></div>
+    <div class="stats"><div class="stat"><strong>Learn first</strong><small>Understand the basics before risking money.</small></div><div class="stat"><strong>Manage risk</strong><small>Practice protecting your capital.</small></div><div class="stat"><strong>Stay disciplined</strong><small>Build a repeatable learning routine.</small></div></div>
+    <div class="notice"><strong>Risk notice:</strong> Forex and leveraged trading can cause significant losses. This website is an educational starter, not financial advice or a promise of profit.</div>
+  </section>
+  <section id="learn" class="content page">
+    <h2>Learning dashboard</h2><p class="sub">Start with the foundations and build your skills step by step.</p>
+    <div class="cards">
+      <article class="card"><div class="icon">📘</div><h3>Forex basics</h3><p>Learn currency pairs, pips, spreads, lots, and how market prices move.</p></article>
+      <article class="card"><div class="icon">🛡️</div><h3>Risk management</h3><p>Study position sizing, stop-loss orders, and why risk limits matter.</p></article>
+      <article class="card"><div class="icon">📊</div><h3>Market analysis</h3><p>Explore charts, trends, support and resistance, and economic news.</p></article>
+    </div>
+  </section>
+  <section id="about" class="content page"><h2>About BA GEE FX</h2><p class="sub">BA GEE FX is being developed into an online trading education platform. This first version is a front-end website; account registration, secure login, database storage, deposits, withdrawals, and live trading are not connected yet.</p></section>
+  <section id="login" class="content page hidden">
+    <h2>Login preview</h2><p class="sub">This form is a visual preview only. It does not authenticate or store passwords.</p>
+    <div class="panel"><form onsubmit="event.preventDefault();alert('Login is not connected yet. Backend setup is required.');"><label for="login-email">Email</label><input id="login-email" type="email" autocomplete="email" required><label for="login-password">Password</label><input id="login-password" type="password" autocomplete="current-password" required><p><button class="btn" type="submit">Login preview</button> <button class="btn secondary" type="button" onclick="showPage('home')">Back</button></p></form></div>
+  </section>
+  <section id="register" class="content page hidden">
+    <h2>Create an account</h2><p class="sub">Registration preview only. A secure backend must be connected before real accounts can be created.</p>
+    <div class="panel"><form onsubmit="event.preventDefault();alert('Registration is not connected yet. Next, connect Supabase Auth securely.');"><label for="reg-name">Full name</label><input id="reg-name" autocomplete="name" required><label for="reg-email">Email</label><input id="reg-email" type="email" autocomplete="email" required><label for="reg-password">Password</label><input id="reg-password" type="password" minlength="8" autocomplete="new-password" required><p><button class="btn" type="submit">Registration preview</button> <button class="btn secondary" type="button" onclick="showPage('home')">Back</button></p></form></div>
+  </section>
+</main>
+<footer><div class="wrap">© <span id="year"></span> BA GEE FX. Educational content only. Trading involves risk.</div></footer>
+<script>
+function showPage(id){document.querySelectorAll('.page').forEach(function(p){p.classList.add('hidden')});var target=document.getElementById(id);if(target)target.classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
