@@ -1,73 +1,268 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071b16">
-  <title>BA GEE FX | Trading Education</title>
-  <style>
-    :root{--bg:#071b16;--panel:#102820;--green:#38d996;--muted:#b7cbc2;--white:#f4fff9;--line:#24483a}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--white);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}.wrap{width:min(1100px,92%);margin:auto}
-    header{position:sticky;top:0;z-index:5;background:#071b16ed;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
-    .brand{font-weight:900;letter-spacing:.08em}.brand span{color:var(--green)}
-    .navlinks{display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-size:.94rem;color:var(--muted)}
-    .btn{display:inline-block;border:0;border-radius:12px;padding:11px 16px;background:var(--green);color:#062016;font-weight:800;cursor:pointer}
-    .btn.secondary{background:transparent;color:var(--white);border:1px solid var(--line)}
-    .hero{padding:72px 0 56px;background:radial-gradient(ellipse at 80% 20%,#1b6245 0,transparent 45%)}
-    .tag{display:inline-block;color:var(--green);border:1px solid #2b7254;border-radius:99px;padding:5px 11px;font-size:.82rem}
-    h1{font-size:clamp(2.3rem,7vw,4.6rem);line-height:1.05;max-width:780px;margin:20px 0}
-    h1 em{font-style:normal;color:var(--green)}.lead{max-width:640px;color:var(--muted);font-size:1.1rem}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:42px}
-    .stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
-    .stat strong{display:block;font-size:1.2rem;color:var(--green)}.stat small{color:var(--muted)}
-    section.content{padding:48px 0}h2{font-size:clamp(1.7rem,4vw,2.5rem);margin:0 0 10px} .sub{color:var(--muted);margin-top:0;max-width:680px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.card h3{margin:4px 0 8px}.card p{color:var(--muted);margin-bottom:0}
-    .icon{font-size:1.6rem}.notice{border:1px solid #78632c;background:#2a2513;color:#f6e6b0;padding:14px 16px;border-radius:14px;margin-top:22px}
-    .panel{max-width:560px;background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:18px}
-    label{display:block;margin:12px 0 5px;color:var(--muted)}input{width:100%;padding:12px;border:1px solid var(--line);background:#081b15;color:var(--white);border-radius:10px;font:inherit}
-    .hidden{display:none}footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.9rem}
-    @media(max-width:720px){.cards{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.hero{padding-top:48px}.navlinks{gap:10px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BA GEE FX | Trading Platform</title>
+<meta name="theme-color" content="#07111f">
+<style>
+:root {
+  --bg:#07111f; --panel:#101d30; --panel2:#15253a;
+  --green:#22d3a0; --text:#f3f7ff; --muted:#8fa2ba;
+  --border:#26374c; --red:#ff647c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Arial,Helvetica,sans-serif}
+button,input{font:inherit}
+button{cursor:pointer}
+.topbar{height:68px;display:flex;align-items:center;
+justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--border);
+background:#091523;position:sticky;top:0;z-index:5}
+.brand{font-size:20px;font-weight:800;letter-spacing:1px}
+.brand span{color:var(--green)}
+.small{font-size:12px;color:var(--muted);margin-top:4px}
+.top-actions{display:flex;gap:9px;align-items:center}
+.btn{border:0;border-radius:9px;padding:11px 15px;font-weight:700}
+.primary{background:var(--green);color:#05251d}
+.secondary{background:var(--panel2);color:var(--text);
+border:1px solid var(--border)}
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 68px)}
+.sidebar{padding:22px 13px;border-right:1px solid var(--border)}
+.navlabel{font-size:11px;color:var(--muted);padding:12px 12px 8px;
+text-transform:uppercase;letter-spacing:1px}
+.nav{width:100%;text-align:left;background:transparent;color:#aebed1;
+border:0;border-radius:9px;padding:13px 12px;margin:3px 0}
+.nav.active,.nav:hover{background:#17312f;color:var(--green)}
+.side-note{margin:30px 5px 0;background:var(--panel);padding:14px;
+border-radius:12px;color:var(--muted);font-size:12px;line-height:1.6}
+main{padding:25px;min-width:0;max-width:1300px;width:100%;margin:auto}
+.heading{display:flex;justify-content:space-between;gap:12px;
+align-items:center;margin-bottom:24px;flex-wrap:wrap}
+h1{font-size:26px;margin:0 0 7px}
+h2{font-size:17px;margin:0 0 17px}
+p{line-height:1.6}
+.muted{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--border);
+border-radius:14px;padding:18px;min-width:0}
+.card-label{font-size:12px;color:var(--muted);margin-bottom:13px}
+.amount{font-size:24px;font-weight:800;overflow-wrap:anywhere}
+.green{color:var(--green)} .red{color:var(--red)}
+.tag{display:inline-block;border:1px solid var(--border);padding:5px 8px;
+border-radius:20px;color:var(--muted);font-size:11px;margin-top:12px}
+.section{margin-top:24px}
+.two-col{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+.market-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;
+gap:8px;padding:14px 0;border-bottom:1px solid var(--border);font-size:13px}
+.market-row:last-child{border:0}
+.coin{font-weight:700}.coin small{display:block;color:var(--muted);
+font-weight:400;margin-top:4px}
+.action-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.action{background:var(--panel2);border:1px solid var(--border);
+color:var(--text);padding:17px 8px;border-radius:10px;font-size:13px}
+.action strong{display:block;color:var(--green);font-size:20px;margin-bottom:9px}
+.notice{padding:13px;background:#17293b;border-radius:9px;
+font-size:12px;color:var(--muted);line-height:1.6;margin-top:16px}
+.page{display:none}.page.active{display:block}
+.formbox{max-width:440px;margin:20px auto}
+.field{display:block;margin:17px 0}
+.field span{display:block;color:var(--muted);font-size:13px;margin-bottom:8px}
+.field input{width:100%;padding:13px;background:#081321;color:white;
+border:1px solid var(--border);border-radius:9px;outline:none}
+.field input:focus{border-color:var(--green)}
+.full{width:100%;margin-top:10px}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.plan{border:1px solid var(--border);border-radius:13px;padding:20px;
+background:var(--panel)}
+.plan h3{margin-top:0}.plan .price{font-size:24px;font-weight:800;
+margin:15px 0}.plan ul{padding-left:18px;color:var(--muted);font-size:13px;
+line-height:2}
+.footer{color:var(--muted);font-size:11px;text-align:center;padding:28px 10px}
+#message{display:none;background:#17312f;color:var(--green);
+padding:12px;border-radius:8px;margin:14px 0;font-size:13px}
+@media(max-width:900px){
+.layout{grid-template-columns:1fr}
+.sidebar{border-right:0;border-bottom:1px solid var(--border);
+display:flex;gap:5px;overflow-x:auto;padding:9px}
+.navlabel,.side-note{display:none}
+.nav{white-space:nowrap;width:auto;padding:11px}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.two-col{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+.topbar{padding:0 12px}.brand{font-size:17px}
+.top-actions .secondary{display:none}
+main{padding:18px 13px}
+h1{font-size:23px}.amount{font-size:21px}
+.plan-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-<header><div class="wrap"><nav>
-  <a class="brand" href="#" onclick="showPage('home');return false">BA GEE <span>FX</span></a>
-  <div class="navlinks"><a href="#learn">Learn</a><a href="#about">About</a><button class="btn secondary" onclick="showPage('login')">Login</button><button class="btn" onclick="showPage('register')">Join platform</button></div>
-</nav></div></header>
-<main class="wrap">
-  <section id="home" class="hero page">
-    <span class="tag">YOUR TRADING LEARNING JOURNEY</span>
-    <h1>Build your knowledge.<br><em>Trade with a plan.</em></h1>
-    <p class="lead">Welcome to BA GEE FX — a platform concept for learning about forex markets, risk management, trading discipline, and market analysis.</p>
-    <div class="actions"><button class="btn" onclick="document.getElementById('learn').scrollIntoView({behavior:'smooth'})">Explore learning</button><button class="btn secondary" onclick="showPage('register')">Create an account</button></div>
-    <div class="stats"><div class="stat"><strong>Learn first</strong><small>Understand the basics before risking money.</small></div><div class="stat"><strong>Manage risk</strong><small>Practice protecting your capital.</small></div><div class="stat"><strong>Stay disciplined</strong><small>Build a repeatable learning routine.</small></div></div>
-    <div class="notice"><strong>Risk notice:</strong> Forex and leveraged trading can cause significant losses. This website is an educational starter, not financial advice or a promise of profit.</div>
-  </section>
-  <section id="learn" class="content page">
-    <h2>Learning dashboard</h2><p class="sub">Start with the foundations and build your skills step by step.</p>
-    <div class="cards">
-      <article class="card"><div class="icon">📘</div><h3>Forex basics</h3><p>Learn currency pairs, pips, spreads, lots, and how market prices move.</p></article>
-      <article class="card"><div class="icon">🛡️</div><h3>Risk management</h3><p>Study position sizing, stop-loss orders, and why risk limits matter.</p></article>
-      <article class="card"><div class="icon">📊</div><h3>Market analysis</h3><p>Explore charts, trends, support and resistance, and economic news.</p></article>
+<header class="topbar">
+  <div>
+    <div class="brand">BA GEE <span>FX</span></div>
+    <div class="small">TRADING PLATFORM</div>
+  </div>
+  <div class="top-actions">
+    <button class="btn secondary" onclick="showPage('login')">Log in</button>
+    <button class="btn primary" onclick="showPage('register')">Get started</button>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="navlabel">Workspace</div>
+  <button class="nav active" data-page="dashboard" onclick="showPage('dashboard')">▦ Dashboard</button>
+  <button class="nav" data-page="markets" onclick="showPage('markets')">↗ Markets</button>
+  <button class="nav" data-page="portfolio" onclick="showPage('portfolio')">◈ Portfolio</button>
+  <button class="nav" data-page="membership" onclick="showPage('membership')">♛ Membership</button>
+  <div class="navlabel">Account</div>
+  <button class="nav" data-page="login" onclick="showPage('login')">⇥ Log in</button>
+  <button class="nav" data-page="register" onclick="showPage('register')">＋ Create account</button>
+  <div class="side-note">Demo mode<br>Market figures and balances are illustrative, not live financial data.</div>
+</aside>
+
+<main>
+<div id="message"></div>
+
+<section class="page active" id="dashboard">
+  <div class="heading">
+    <div><h1>Welcome to BA GEE FX</h1>
+    <div class="muted">Your trading workspace at a glance.</div></div>
+    <span class="tag">DEMO ACCOUNT</span>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="card-label">Demo balance</div>
+      <div class="amount">$10,000.00</div><span class="tag">Sample funds</span></div>
+    <div class="card"><div class="card-label">Open positions</div>
+      <div class="amount">0</div><span class="tag">No active trades</span></div>
+    <div class="card"><div class="card-label">Demo profit/loss</div>
+      <div class="amount green">$0.00</div><span class="tag">Illustrative</span></div>
+    <div class="card"><div class="card-label">Membership</div>
+      <div class="amount">Starter</div><span class="tag">Basic access</span></div>
+  </div>
+
+  <div class="two-col section">
+    <div class="card">
+      <h2>Market watch</h2>
+      <div class="market-row"><span class="coin">EUR/USD<small>Euro / US Dollar</small></span><span>1.0840</span><span class="green">+0.12%</span></div>
+      <div class="market-row"><span class="coin">GBP/USD<small>Pound / US Dollar</small></span><span>1.2710</span><span class="red">-0.08%</span></div>
+      <div class="market-row"><span class="coin">USD/JPY<small>US Dollar / Yen</small></span><span>149.50</span><span class="green">+0.21%</span></div>
+      <div class="market-row"><span class="coin">XAU/USD<small>Gold / US Dollar</small></span><span>2,350.00</span><span class="green">+0.15%</span></div>
+      <p class="muted" style="font-size:11px">Illustrative prices only. Not live quotes.</p>
+      <button class="btn secondary" onclick="showPage('markets')">Explore markets</button>
     </div>
-  </section>
-  <section id="about" class="content page"><h2>About BA GEE FX</h2><p class="sub">BA GEE FX is being developed into an online trading education platform. This first version is a front-end website; account registration, secure login, database storage, deposits, withdrawals, and live trading are not connected yet.</p></section>
-  <section id="login" class="content page hidden">
-    <h2>Login preview</h2><p class="sub">This form is a visual preview only. It does not authenticate or store passwords.</p>
-    <div class="panel"><form onsubmit="event.preventDefault();alert('Login is not connected yet. Backend setup is required.');"><label for="login-email">Email</label><input id="login-email" type="email" autocomplete="email" required><label for="login-password">Password</label><input id="login-password" type="password" autocomplete="current-password" required><p><button class="btn" type="submit">Login preview</button> <button class="btn secondary" type="button" onclick="showPage('home')">Back</button></p></form></div>
-  </section>
-  <section id="register" class="content page hidden">
-    <h2>Create an account</h2><p class="sub">Registration preview only. A secure backend must be connected before real accounts can be created.</p>
-    <div class="panel"><form onsubmit="event.preventDefault();alert('Registration is not connected yet. Next, connect Supabase Auth securely.');"><label for="reg-name">Full name</label><input id="reg-name" autocomplete="name" required><label for="reg-email">Email</label><input id="reg-email" type="email" autocomplete="email" required><label for="reg-password">Password</label><input id="reg-password" type="password" minlength="8" autocomplete="new-password" required><p><button class="btn" type="submit">Registration preview</button> <button class="btn secondary" type="button" onclick="showPage('home')">Back</button></p></form></div>
-  </section>
+    <div class="card">
+      <h2>Quick actions</h2>
+      <div class="action-grid">
+        <button class="action" onclick="showPage('register')"><strong>＋</strong>Create account</button>
+        <button class="action" onclick="showPage('portfolio')"><strong>◈</strong>Portfolio</button>
+        <button class="action" onclick="showPage('membership')"><strong>♛</strong>Plans</button>
+      </div>
+      <div class="notice">To enable secure accounts and save user information, the next step is connecting your Supabase project. Never share your secret or service-role key.</div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="markets">
+  <div class="heading"><div><h1>Markets</h1>
+  <div class="muted">Example watchlist for the platform preview.</div></div></div>
+  <div class="card">
+    <h2>Watchlist</h2>
+    <div class="market-row"><span class="coin">EUR/USD<small>Forex</small></span><span>1.0840</span><span class="green">+0.12%</span></div>
+    <div class="market-row"><span class="coin">GBP/USD<small>Forex</small></span><span>1.2710</span><span class="red">-0.08%</span></div>
+    <div class="market-row"><span class="coin">USD/JPY<small>Forex</small></span><span>149.50</span><span class="green">+0.21%</span></div>
+    <div class="market-row"><span class="coin">XAU/USD<small>Gold</small></span><span>2,350.00</span><span class="green">+0.15%</span></div>
+    <div class="notice">These sample prices are static placeholders, not current market quotes or trade recommendations.</div>
+  </div>
+</section>
+
+<section class="page" id="portfolio">
+  <div class="heading"><div><h1>My portfolio</h1>
+  <div class="muted">Account overview and sample positions.</div></div></div>
+  <div class="cards">
+    <div class="card"><div class="card-label">Demo equity</div><div class="amount">$10,000.00</div></div>
+    <div class="card"><div class="card-label">Used margin</div><div class="amount">$0.00</div></div>
+  </div>
+  <div class="card section"><h2>Positions</h2>
+  <p class="muted">You have no demo positions yet.</p>
+  <div class="notice">Real trading, deposits and withdrawals are not enabled in this preview.</div></div>
+</section>
+
+<section class="page" id="membership">
+  <div class="heading"><div><h1>Membership plans</h1>
+  <div class="muted">Choose a plan design for your platform. No payments are processed here.</div></div></div>
+  <div class="plan-grid">
+    <div class="plan"><h3>Starter</h3><div class="price">Free</div>
+      <ul><li>Dashboard preview</li><li>Sample market watch</li><li>Basic account layout</li></ul>
+      <button class="btn secondary full" onclick="showPage('register')">Get started</button></div>
+    <div class="plan"><h3>Pro</h3><div class="price">Coming soon</div>
+      <ul><li>Planned advanced tools</li><li>Expanded analytics design</li><li>Account features</li></ul>
+      <button class="btn secondary full" onclick="notify('Pro membership is not activated yet.')">Coming soon</button></div>
+    <div class="plan"><h3>Premium</h3><div class="price">Coming soon</div>
+      <ul><li>Planned premium interface</li><li>Additional dashboard features</li><li>Membership management</li></ul>
+      <button class="btn secondary full" onclick="notify('Premium membership is not activated yet.')">Coming soon</button></div>
+  </div>
+</section>
+
+<section class="page" id="login">
+  <div class="card formbox">
+    <h1>Welcome back</h1><p class="muted">Log in to your BA GEE FX account.</p>
+    <form onsubmit="demoAuth(event,'login')">
+      <label class="field"><span>Email address</span><input type="email" required placeholder="you@example.com"></label>
+      <label class="field"><span>Password</span><input type="password" required minlength="6" placeholder="Enter password"></label>
+      <button class="btn primary full" type="submit">Log in</button>
+    </form>
+    <p class="muted">New here? <a href="#" style="color:var(--green)" onclick="showPage('register');return false">Create an account</a></p>
+  </div>
+</section>
+
+<section class="page" id="register">
+  <div class="card formbox">
+    <h1>Create account</h1><p class="muted">Start setting up your BA GEE FX profile.</p>
+    <form onsubmit="demoAuth(event,'register')">
+      <label class="field"><span>Full name</span><input type="text" required placeholder="Your full name"></label>
+      <label class="field"><span>Email address</span><input type="email" required placeholder="you@example.com"></label>
+      <label class="field"><span>Password</span><input type="password" required minlength="6" placeholder="At least 6 characters"></label>
+      <button class="btn primary full" type="submit">Create account</button>
+    </form>
+    <p class="muted">Already registered? <a href="#" style="color:var(--green)" onclick="showPage('login');return false">Log in</a></p>
+  </div>
+</section>
+
+<div class="footer">BA GEE FX · Platform preview · Demo information only</div>
 </main>
-<footer><div class="wrap">© <span id="year"></span> BA GEE FX. Educational content only. Trading involves risk.</div></footer>
+</div>
+
 <script>
-function showPage(id){document.querySelectorAll('.page').forEach(function(p){p.classList.add('hidden')});var target=document.getElementById(id);if(target)target.classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
-document.getElementById('year').textContent=new Date().getFullYear();
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const target=document.getElementById(id);
+  if(target) target.classList.add('active');
+  document.querySelectorAll('.nav').forEach(n=>{
+    n.classList.toggle('active',n.dataset.page===id);
+  });
+  const msg=document.getElementById('message');
+  msg.style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function notify(text){
+  const msg=document.getElementById('message');
+  msg.textContent=text;
+  msg.style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function demoAuth(event,kind){
+  event.preventDefault();
+  notify(kind==='login'
+    ? 'The login screen is a preview. Supabase authentication must be connected before accounts can be used.'
+    : 'The registration screen is a preview. Connect Supabase before creating real accounts.');
+}
 </script>
 </body>
-</html>
+  </html>
+  
