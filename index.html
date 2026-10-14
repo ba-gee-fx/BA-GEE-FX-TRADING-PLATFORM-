@@ -266,7 +266,62 @@ function notify(text){
   msg.style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function demoAuth(event,kind){
+async function demoAuth(event, kind) {
+  event.preventDefault();
+
+  const form = event.target;
+  const inputs = form.querySelectorAll("input");
+  const message = document.getElementById("message");
+  const button = form.querySelector('button[type="submit"]');
+
+  button.disabled = true;
+  button.textContent = "Please wait...";
+
+  try {
+    let result;
+
+    if (kind === "register") {
+      const fullName = inputs[0].value.trim();
+      const email = inputs[1].value.trim();
+      const password = inputs[2].value;
+
+      result = await supabaseClient.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { full_name: fullName }
+        }
+      });
+    } else {
+      const email = inputs[0].value.trim();
+      const password = inputs[1].value;
+
+      result = await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+      });
+    }
+
+    if (result.error) {
+      throw result.error;
+    }
+
+    if (kind === "register" && !result.data.session) {
+      notify("Account created. Check your email to confirm registration.");
+    } else {
+      showPage("dashboard");
+      notify("You are signed in successfully.");
+    }
+  } catch (error) {
+    notify(error.message || "Authentication failed. Please try again.");
+  } finally {
+    button.disabled = false;
+    button.textContent = kind === "register"
+      ? "Create account"
+      : "Log in";
+  }
+        }
+  
   event.preventDefault();
   notify(kind==='login'
     ? 'The login screen is a preview. Supabase authentication must be connected before accounts can be used.'
